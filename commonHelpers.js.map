@@ -1,1 +1,1 @@
-{"version":3,"file":"commonHelpers.js","sources":[],"sourcesContent":[],"names":[],"mappings":""}
+{"version":3,"file":"commonHelpers.js","sources":["../src/js/index.js"],"sourcesContent":["import iziToast from 'izitoast';\nimport 'izitoast/dist/css/iziToast.min.css';\n\nimport SimpleLightbox from 'simplelightbox';\nimport 'simplelightbox/dist/simple-lightbox.min.css';\n\nconst input = document.querySelector('.form-input');\nconst button = document.querySelector('.form-btn');"],"names":[],"mappings":"0uBAMc,SAAS,cAAc,aAAa,EACnC,SAAS,cAAc,WAAW"}
