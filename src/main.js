@@ -12,7 +12,7 @@ const searchParams = {
     key: '42200022-9c7e7676f0f903944c054771a',
     image_type: 'photo',
     orientation: 'horizontal',
-    safesearch: 'true',
+    safesearch: true,
     q: '',
 }
 
@@ -52,7 +52,7 @@ function createGallery(images) {
             maxWidth: '432px',
         });
     } else {
-        const link = images.hits.map(image => `<a class="gallery-link" href="${images.largeImageURL}">
+        const link = images.hits.map(image => `<a class="gallery-link" href="${image.largeImageURL}">
         <img class="gallery-image"
         src="${image.webformatURL}"
         alt="${image.tags}"
@@ -80,9 +80,9 @@ function createGallery(images) {
         </div>
         `).join('');
         gallery.innerHTML = link;
-        let lightBox = new SimpleLightbox('.gallery-link');
-        lightBox.refresh();
     }
+    let lightBox = new SimpleLightbox('.gallery-link');
+    lightBox.refresh();
     loader.style.display = 'none';
 }
 
