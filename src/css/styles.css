@@ -1,6 +1,7 @@
 body {
     width: 1440px;
     padding: 40px;
+    margin: 0 auto;
 }
 
 .form {
@@ -89,38 +90,35 @@ p {
 }
 
 .loader {
-    width: 48px;
-    height: 48px;
-    display: inline-block;
+    display: block;
     position: relative;
-}
-
-.loader::after,
-.loader::before {
-    content: '';
-    box-sizing: border-box;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 2px solid #FFF;
-    position: absolute;
-    left: 0;
-    top: 0;
-    animation: animloader 2s linear infinite;
+    height: 12px;
+    width: 80%;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .loader::after {
-    animation-delay: 1s;
+    content: '';
+    width: 40%;
+    height: 100%;
+    background: #FF3D00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    animation: animloader 2s linear infinite;
 }
 
 @keyframes animloader {
     0% {
-        transform: scale(0);
-        opacity: 1;
+        left: 0;
+        transform: translateX(-100%);
     }
 
     100% {
-        transform: scale(1);
-        opacity: 0;
+        left: 100%;
+        transform: translateX(0%);
     }
 }

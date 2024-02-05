@@ -18,19 +18,21 @@ const searchParams = {
 
 form.addEventListener('submit', e => {
     e.preventDefault();
-    const inputValue = e.target.elements.input.value.trim();
+    loader.style.display = 'block';
+    const inputValue = e.target.elements.input.value;
     if (!inputValue) return;
     gallery.innerHTML = '';
-    loader.style.display = 'block';
     searchParams.q = inputValue;
-    getPhotoByName().then(images => createGallery(images))
+    getPhotoByName()
+        .then(images => createGallery(images))
         .catch(error => console.log(error))
     e.target.reset();
 });
 
 function getPhotoByName() {
     const urlParams = new URLSearchParams(searchParams);
-    return fetch(`https://pixabay.com/api/?${urlParams}`).then(res => {
+    return fetch(`https://pixabay.com/api/?${urlParams}`)
+        .then(res => {
         if (res.ok) {
             return res.json();
         } else {
@@ -46,6 +48,9 @@ function createGallery(images) {
             messageColor: '#FFFFFF',
             backgroundColor: '#EF4040',
             position: 'topRight',
+            messageSize: '16px',
+            messageLineHeight: '24px',
+            maxWidth: '432px',
         });
     } else {
         const link = images.hits.map(image => `<a class="gallery-link" href="${images.largeImageURL}">
@@ -76,8 +81,9 @@ function createGallery(images) {
         </a>
         `).join('');
         gallery.innerHTML = link;
-        const lightbox = new SimpleLightbox('.gallery a');
-        lightbox.refresh();
+        const lightBox = new SimpleLightbox('.gallery-link');
+        lightBox.refresh();
     }
     loader.style.display = 'none';
 }
+
