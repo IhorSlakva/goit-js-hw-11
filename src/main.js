@@ -1,12 +1,12 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const form = document.querySelector('.form');
 const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
+
 loader.style.display = 'none';
 const searchParams = {
     key: '42200022-9c7e7676f0f903944c054771a',
@@ -19,9 +19,8 @@ const searchParams = {
 form.addEventListener('submit', e => {
     e.preventDefault();
     loader.style.display = 'block';
-    const inputValue = e.target.elements.input.value;
-    if (!inputValue) return;
     gallery.innerHTML = '';
+    const inputValue = e.target.elements.input.value;
     searchParams.q = inputValue;
     getPhotoByName()
         .then(images => createGallery(images))
@@ -57,7 +56,8 @@ function createGallery(images) {
         <img class="gallery-image"
         src="${image.webformatURL}"
         alt="${image.tags}"
-        /><div class="img-content">
+         </a>
+        <div class="img-content">
         <div>
         <h3>Likes</h3>
         <p>${image.likes}</p>
@@ -78,10 +78,9 @@ function createGallery(images) {
         <p>${image.downloads}</p>
         </div>
         </div>
-        </a>
         `).join('');
         gallery.innerHTML = link;
-        const lightBox = new SimpleLightbox('.gallery-link');
+        let lightBox = new SimpleLightbox('.gallery-link');
         lightBox.refresh();
     }
     loader.style.display = 'none';
