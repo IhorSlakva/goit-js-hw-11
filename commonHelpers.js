@@ -1,28 +1,28 @@
-import{i as u,S as d}from"./assets/vendor-46aac873.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))n(e);new MutationObserver(e=>{for(const o of e)if(o.type==="childList")for(const i of o.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&n(i)}).observe(document,{childList:!0,subtree:!0});function s(e){const o={};return e.integrity&&(o.integrity=e.integrity),e.referrerpolicy&&(o.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?o.credentials="include":e.crossorigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function n(e){if(e.ep)return;e.ep=!0;const o=s(e);fetch(e.href,o)}})();const h=document.querySelector(".form"),a=document.querySelector(".gallery"),l=document.querySelector(".loader");l.style.display="none";const c={key:"42200022-9c7e7676f0f903944c054771a",image_type:"photo",orientation:"horizontal",safesearch:"true",q:""};h.addEventListener("submit",r=>{r.preventDefault(),l.style.display="block",a.innerHTML="";const t=r.target.elements.input.value;c.q=t,f().then(s=>p(s)).catch(s=>console.log(s)),r.target.reset()});function f(){const r=new URLSearchParams(c);return fetch(`https://pixabay.com/api/?${r}`).then(t=>{if(t.ok)return t.json();throw new Error(t.status)})}function p(r){if(r.hits.length===0)u.show({message:"Sorry, there are no images matching your search query. Please try again!",messageColor:"#FFFFFF",backgroundColor:"#EF4040",position:"topRight",messageSize:"16px",messageLineHeight:"24px",maxWidth:"432px"});else{const t=r.hits.map(n=>`<a class="gallery-link" href="${r.largeImageURL}">
+import{i as u,S as d}from"./assets/vendor-46aac873.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const i of t.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&r(i)}).observe(document,{childList:!0,subtree:!0});function n(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerpolicy&&(t.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?t.credentials="include":e.crossorigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function r(e){if(e.ep)return;e.ep=!0;const t=n(e);fetch(e.href,t)}})();const h=document.querySelector(".form"),a=document.querySelector(".gallery"),l=document.querySelector(".loader");l.style.display="none";const c={key:"42200022-9c7e7676f0f903944c054771a",image_type:"photo",orientation:"horizontal",safesearch:!0,q:""};h.addEventListener("submit",s=>{s.preventDefault(),l.style.display="block",a.innerHTML="";const o=s.target.elements.input.value;c.q=o,f().then(n=>p(n)).catch(n=>console.log(n)),s.target.reset()});function f(){const s=new URLSearchParams(c);return fetch(`https://pixabay.com/api/?${s}`).then(o=>{if(o.ok)return o.json();throw new Error(o.status)})}function p(s){if(s.hits.length===0)u.show({message:"Sorry, there are no images matching your search query. Please try again!",messageColor:"#FFFFFF",backgroundColor:"#EF4040",position:"topRight",messageSize:"16px",messageLineHeight:"24px",maxWidth:"432px"});else{const n=s.hits.map(r=>`<a class="gallery-link" href="${r.largeImageURL}">
         <img class="gallery-image"
-        src="${n.webformatURL}"
-        alt="${n.tags}"
+        src="${r.webformatURL}"
+        alt="${r.tags}"
          </a>
         <div class="img-content">
         <div>
         <h3>Likes</h3>
-        <p>${n.likes}</p>
+        <p>${r.likes}</p>
         </div>
 
         <div>
         <h3>Views</h3>
-        <p>${n.views}</p>
+        <p>${r.views}</p>
         </div>
 
         <div>
         <h3>Comments</h3>
-        <p>${n.comments}</p>
+        <p>${r.comments}</p>
         </div>
 
         <div>
         <h3>Downloads</h3>
-        <p>${n.downloads}</p>
+        <p>${r.downloads}</p>
         </div>
         </div>
-        `).join("");a.innerHTML=t,new d(".gallery-link").refresh()}l.style.display="none"}
+        `).join("");a.innerHTML=n}new d(".gallery-link").refresh(),l.style.display="none"}
 //# sourceMappingURL=commonHelpers.js.map
