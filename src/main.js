@@ -19,7 +19,6 @@ const searchParams = {
 form.addEventListener('submit', e => {
     e.preventDefault();
     loader.style.display = 'block';
-    gallery.innerHTML = '';
     const inputValue = e.target.elements.input.value;
     searchParams.q = inputValue;
     getPhotoByName()
@@ -50,7 +49,8 @@ function createGallery(images) {
             messageSize: '16px',
             messageLineHeight: '24px',
             maxWidth: '432px',
-        });
+       });
+        gallery.innerHTML = '';
     } else {
         const link = images.hits.map(image => `<a class="gallery-link" href="${image.largeImageURL}">
         <img class="gallery-image"
